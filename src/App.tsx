@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import{ useState, useEffect } from "react";
 
 interface eTask {
   eid: number;
@@ -14,6 +14,7 @@ const App = () => {
     const storedTask = localStorage.getItem(storagekey);
     return storedTask ? JSON.parse(storedTask) : [];
   });
+  
   const [einput, esetInput] = useState<string>("");
   const [editingId, setEditingId] = useState<number | null>(null);
 
@@ -66,7 +67,8 @@ const App = () => {
 
   // Function to delete a task
   const edeleteTask = (eid: number) => {
-    esetTasks(etasks.filter((etask) => etask.eid !== eid));
+    const deleted = etasks.filter((etask) => etask.eid !== eid)
+    esetTasks(deleted);
   };
 
   // Function to toggle task completion status
